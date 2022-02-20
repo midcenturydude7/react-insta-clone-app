@@ -12,6 +12,10 @@ Component:
 
 - /explore (explore page)
 
+Components:
+
+- ExploreSuggestions
+
 ## Shared Components
 
 - Navbar
