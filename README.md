@@ -15,6 +15,7 @@ Component:
 Components:
 
 - ExploreSuggestions
+- ExploreGrid
 
 ## Shared Components
 
