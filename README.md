@@ -1,4 +1,4 @@
-# instagram-react12
+# Instagram clone built with React
 
 ## Routes
 
@@ -9,6 +9,8 @@ Component:
 - FeedPost
 - FeedPostSkeleton
 - FeedSideSuggestions
+
+- /explore (explore page)
 
 ## Shared Components
 
