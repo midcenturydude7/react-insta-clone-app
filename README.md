@@ -43,7 +43,7 @@ Components:
 
 - /accounts/login (login page)
 
-- /accounts/emialsignup/ (signup page)
+- /accounts/emailsignup/ (signup page)
 
 * (not found page)
 
