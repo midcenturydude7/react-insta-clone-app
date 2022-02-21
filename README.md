@@ -4,7 +4,7 @@
 
 - / (feed page)
 
-Component:
+Components:
 
 - FeedPost
 - FeedPostSkeleton
@@ -12,10 +12,40 @@ Component:
 
 - /explore (explore page)
 
-Components:
+Components: 
 
 - ExploreSuggestions
 - ExploreGrid
+
+- /p/:postId (post page)
+
+Components:
+
+- Post
+- PostSkeleton
+- PostModal
+- MorePostsFromUser
+
+- notification
+
+Components: 
+
+- NotificationList
+- NotificationToolTip
+
+- /:username (profile page)
+
+Components:
+
+- ProfileTabs
+
+- /accounts/edit/ (edit profile page)
+
+- /accounts/login (login page)
+
+- /accounts/emialsignup/ (signup page)
+
+* (not found page)
 
 ## Shared Components
 
@@ -23,3 +53,8 @@ Components:
 - FollowSuggestions
 - FollowButton
 - UserCard
+- LoadingGuide
+- OptionsDialog
+- ProfilePicture
+- Layout
+- SEO
