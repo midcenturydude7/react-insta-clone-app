@@ -1,8 +1,8 @@
 import React from "react";
-import { AppBar } from "@material-ui/core";
 import { useNavbarStyles } from "../../styles";
-import { Link } from 'react-router-dom';
-import logo from '../../images/logo.png'
+import { AppBar } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import logo from "../../images/logo.png";
 
 function Navbar() {
   const classes = useNavbarStyles();
@@ -23,7 +23,7 @@ function Logo() {
     <div className={classes.logoContainer}>
       <Link to="/">
         <div className={classes.logoWrapper}>
-          <img src={logo} alt="Instagram Logo" className={classes.logo}/>
+          <img src={logo} alt="Instagram" className={classes.logo} />
         </div>
       </Link>
     </div>
