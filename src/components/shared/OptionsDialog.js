@@ -11,7 +11,7 @@ function OptionsDialog({ onClose }) {
     <Dialog
       open
       classes={{
-        scrollPaper: classes.dialogScrollpaper
+        scrollPaper: classes.dialogScrollPaper
       }}
       onClose={onClose}
       TransitionComponent={Zoom}
