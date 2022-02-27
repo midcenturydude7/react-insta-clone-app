@@ -3,7 +3,7 @@ import { useNavbarStyles, WhiteTooltip, RedTooltip } from "../../styles";
 import { AppBar, Avatar, Fade, Grid, Hidden, InputBase, Typography, Zoom } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../../images/logo.png";
-import { LoadingIcon, AddIcon, Like, LikeActiveIcon, ExploreIcon, ExploreActiveIcon, HomeIcon, HomeActiveIcon, LikeIcon } from "../../icons";
+import { LoadingIcon, AddIcon, LikeActiveIcon, ExploreIcon, ExploreActiveIcon, HomeIcon, HomeActiveIcon, LikeIcon } from "../../icons";
 import { defaultCurrentUser, getDefaultUser } from "../../data";
 import NotificationTooltip from "../notification/NotificationTooltip";
 import NotificationList from "../notification/NotificationList";
