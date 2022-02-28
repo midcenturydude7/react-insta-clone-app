@@ -22,7 +22,7 @@ import ProfileTabs from "../components/profile/ProfileTabs";
 function ProfilePage() {
   const classes = useProfilePageStyles();
   const [showOptionsMenu, setOptionsMenu] = React.useState(false);
-  const isOwner = true;
+  const isOwner = false;
 
   function handleOptionsMenuClick() {
     setOptionsMenu(true);
