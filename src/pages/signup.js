@@ -4,9 +4,31 @@ import SEO from "../components/shared/Seo";
 import { Card, Typography, TextField, Button } from "@material-ui/core";
 import { LoginWithFacebook } from "./login";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../auth";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function SignUpPage() {
   const classes = useSignUpPageStyles();
+  const { signUpWithEmailAndPassword } = React.useContext(AuthContext);
+  const [values, setValues] = React.useState({
+    email: "",
+    name: "",
+    username: "",
+    password: ""
+  });
+  const history = useHistory();
+
+
+  function handleChange(event) {
+    const { name, value } = event.target
+    setValues(prev => ({ ...prev, [name]: value }));
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    await signUpWithEmailAndPassword(values);
+    history.push("/")
+  }
 
   return (
     <>
@@ -28,8 +50,10 @@ function SignUpPage() {
               </div>
               <div className={classes.orLine} />
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <TextField 
+                name="email"
+                onChange={handleChange}
                 fullWidth
                 variant="filled"
                 label="Email"
@@ -38,6 +62,8 @@ function SignUpPage() {
                 className={classes.textField}
               />
               <TextField 
+                name="name"
+                onChange={handleChange}
                 fullWidth
                 variant="filled"
                 label="Full Name"
@@ -45,6 +71,8 @@ function SignUpPage() {
                 className={classes.textField}
               />
               <TextField 
+                name="username"
+                onChange={handleChange}
                 fullWidth
                 variant="filled"
                 label="Username"
@@ -52,7 +80,9 @@ function SignUpPage() {
                 className={classes.textField}
                 autoComplete="username"
               />
-              <TextField 
+              <TextField
+                name="password"
+                onChange={handleChange}
                 fullWidth
                 variant="filled"
                 label="Password"
