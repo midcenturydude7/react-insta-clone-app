@@ -7,7 +7,8 @@ export function PostSkeleton() {
   const matches = useMediaQuery("(min-width: 900px)");
 
   return (
-    <div className={classes.container}
+    <div
+      className={classes.container}
       style={{
         gridTemplateColumns: matches && "600px 335px"
       }}
@@ -15,15 +16,14 @@ export function PostSkeleton() {
       <div className={classes.mediaSkeleton} />
       <div>
         <div className={classes.headerSkeleton}>
-        <div className={classes.avatarSkeleton}/>
+          <div className={classes.avatarSkeleton} />
           <div className={classes.headerTextSkeleton}>
             <div className={classes.primaryTextSkeleton} />
             <div className={classes.secondaryTextSkeleton} />
           </div>
         </div>
       </div>
-      <div className={classes.mediaSkeleton} />
-  </div>
+    </div>
   );
 }
 

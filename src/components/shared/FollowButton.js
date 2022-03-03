@@ -1,6 +1,6 @@
-import { Button } from "@material-ui/core";
 import React from "react";
 import { useFollowButtonStyles } from "../../styles";
+import { Button } from "@material-ui/core";
 
 function FollowButton({ side }) {
   const classes = useFollowButtonStyles({ side });
@@ -16,7 +16,7 @@ function FollowButton({ side }) {
     >
       Follow
     </Button>
-  )
+  );
 
   const followingButton = (
     <Button
@@ -27,7 +27,7 @@ function FollowButton({ side }) {
     >
       Following
     </Button>
-  )
+  );
 
   return isFollowing ? followingButton : followButton;
 }

@@ -7,7 +7,7 @@ function ProfilePicture({
   image = "https://reedbarger.nyc3.digitaloceanspaces.com/reactbootcamp/avatar.png",
   isOwner
 }) {
-  const classes = useProfilePictureStyles({ isOwner, size });
+  const classes = useProfilePictureStyles({ size, isOwner });
 
   return (
     <section className={classes.section}>
@@ -20,7 +20,6 @@ function ProfilePicture({
           <Person className={classes.person} />
         </div>
       )}
-
     </section>
   );
 }

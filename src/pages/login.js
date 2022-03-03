@@ -23,21 +23,21 @@ function LoginPage() {
           <Card className={classes.card}>
             <CardHeader className={classes.cardHeader} />
             <form>
-              <TextField 
+              <TextField
                 fullWidth
                 variant="filled"
                 label="Username"
                 margin="dense"
                 className={classes.textField}
-                autocomplete="username"
+                autoComplete="username"
               />
-              <TextField 
+              <TextField
                 fullWidth
                 variant="filled"
                 label="Password"
                 margin="dense"
                 className={classes.textField}
-                autocomplete="current-password"
+                autoComplete="current-password"
                 type="password"
               />
               <Button
@@ -61,9 +61,7 @@ function LoginPage() {
             </div>
             <LoginWithFacebook color="secondary" iconColor="blue" />
             <Button fullWidth color="secondary">
-              <Typography variant="caption">
-                Forgot password?
-              </Typography>
+              <Typography variant="caption">Forgot password?</Typography>
             </Button>
           </Card>
           <Card className={classes.signUpCard}>
@@ -84,18 +82,19 @@ function LoginPage() {
 
 export function LoginWithFacebook({ color, iconColor, variant }) {
   const classes = useLoginPageStyles();
-  const facebookIcon = iconColor === 'blue' ? FacebookIconBlue : FacebookIconWhite;
+  const facebookIcon =
+    iconColor === "blue" ? FacebookIconBlue : FacebookIconWhite;
 
   return (
     <Button fullWidth color={color} variant={variant}>
-      <img 
+      <img
         src={facebookIcon}
         alt="facebook icon"
         className={classes.facebookIcon}
       />
-      Log In With Facebook
+      Log In with Facebook
     </Button>
-  )
+  );
 }
 
 export default LoginPage;

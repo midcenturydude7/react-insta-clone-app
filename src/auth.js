@@ -2,17 +2,16 @@ import React from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
-import defaultUserImage from './images/default-user-image.jpg';
-import { CREATE_USER } from "./graphql/mutations";
+import defaultUserImage from "./images/default-user-image.jpg";
 import { useMutation } from "@apollo/react-hooks";
+import { CREATE_USER } from "./graphql/mutations";
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
-// Find these options in your Firebase console
 firebase.initializeApp({
     apiKey: "AIzaSyA-iLJLMJFFkYQ6HS57d3CLnVd0fyV1oZY",
     authDomain: "react-insta-clone-app.firebaseapp.com",
-    databaseURL: "https://react-insta-clone-app.firebaseio.com",
+    databaseURL: "https://react-insta-clone-app-default-rtdb.firebaseio.com/",
     projectId: "react-insta-clone-app",
     storageBucket: "react-insta-clone-app.appspot.com",
     messagingSenderId: "977834682528",
@@ -27,7 +26,7 @@ function AuthProvider({ children }) {
   const [createUser] = useMutation(CREATE_USER);
 
   React.useEffect(() => {
-    firebase.auth().onAuthStateChanged(async user => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
         const token = await user.getIdToken();
         const idTokenResult = await user.getIdTokenResult();
@@ -40,10 +39,10 @@ function AuthProvider({ children }) {
           // Check if refresh is required.
           const metadataRef = firebase
             .database()
-            .ref(`metadata/ + user.uid + /refreshTime`);
+            .ref(`metadata/${user.uid}/refreshTime`);
 
           metadataRef.on("value", async (data) => {
-            if(!data.exists) return
+            if (!data.exists) return;
             // Force refresh to pick up the latest custom claims changes.
             const token = await user.getIdToken(true);
             setAuthState({ status: "in", user, token });

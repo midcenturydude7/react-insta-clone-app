@@ -7,7 +7,7 @@ function FeedPostSkeleton() {
   return (
     <div className={classes.container}>
       <div className={classes.headerSkeleton}>
-        <div className={classes.avatarSkeleton}/>
+        <div className={classes.avatarSkeleton} />
         <div className={classes.headerTextSkeleton}>
           <div className={classes.primaryTextSkeleton} />
           <div className={classes.secondaryTextSkeleton} />

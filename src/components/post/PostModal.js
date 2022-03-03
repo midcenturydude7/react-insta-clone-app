@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
-import { useHistory,useParams } from "react-router-dom";
 import { usePostModalStyles } from "../../styles";
+import { useHistory, useParams } from "react-router-dom";
 import { CloseIcon } from "../../icons";
 import Post from "./Post";
 
@@ -22,8 +22,8 @@ function PostModal() {
             display: "flex",
             alignItems: "center",
             maxWidth: 935,
-            top: "50%",
             width: "100%",
+            top: "50%",
             left: "50%",
             right: "auto",
             bottom: "auto",
@@ -35,7 +35,7 @@ function PostModal() {
           }
         }}
       >
-        <Post  id={postId} />
+        <Post id={postId} />
       </Modal>
       <div onClick={() => history.goBack()} className={classes.close}>
         <CloseIcon />

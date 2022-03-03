@@ -1,10 +1,20 @@
-import { Button, Drawer, Hidden, IconButton, List, ListItem, ListItemText, TextField, Typography } from "@material-ui/core";
-import { Menu } from "@material-ui/icons";
 import React from "react";
-import Layout from "../components/shared/Layout";
-import ProfilePicture from "../components/shared/ProfilePicture";
-import { defaultCurrentUser } from "../data";
 import { useEditProfilePageStyles } from "../styles";
+import Layout from "../components/shared/Layout";
+import {
+  IconButton,
+  Button,
+  Hidden,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  TextField
+} from "@material-ui/core";
+import { Menu } from "@material-ui/icons";
+import { defaultCurrentUser } from "../data";
+import ProfilePicture from "../components/shared/ProfilePicture";
 
 function EditProfilePage({ history }) {
   const classes = useEditProfilePageStyles();
@@ -18,8 +28,8 @@ function EditProfilePage({ history }) {
   function handleSelected(index) {
     switch (index) {
       case 0:
-        return path.includes("edit")
-      default: 
+        return path.includes("edit");
+      default:
         break;
     }
   }
@@ -30,7 +40,7 @@ function EditProfilePage({ history }) {
         history.push("/accounts/edit");
         break;
       default:
-        break;   
+        break;
     }
   }
 
@@ -44,7 +54,7 @@ function EditProfilePage({ history }) {
     "Privacy and Security",
     "Login Activity",
     "Emails from Instagram"
-  ]
+  ];
 
   const drawer = (
     <List>
@@ -52,7 +62,7 @@ function EditProfilePage({ history }) {
         <ListItem
           key={option}
           button
-          selected={handleSelected()}
+          selected={handleSelected(index)}
           onClick={() => handleListClick(index)}
           classes={{
             selected: classes.listItemSelected,
@@ -63,12 +73,12 @@ function EditProfilePage({ history }) {
         </ListItem>
       ))}
     </List>
-  )
+  );
 
   return (
     <Layout title="Edit Profile">
       <section className={classes.section}>
-        <IconButton 
+        <IconButton
           edge="start"
           onClick={handleToggleDrawer}
           className={classes.menuButton}
@@ -84,22 +94,23 @@ function EditProfilePage({ history }) {
               onClose={handleToggleDrawer}
               classes={{ paperAnchorLeft: classes.temporaryDrawer }}
             >
-
-            {drawer}
+              {drawer}
             </Drawer>
           </Hidden>
-          <Hidden xsDown implementation="css"
+          <Hidden
+            xsDown
+            implementation="css"
             className={classes.permanentDrawerRoot}
           >
             <Drawer
               variant="permanent"
               open
-              classes={{ 
+              classes={{
                 paper: classes.permanentDrawerPaper,
-                root: classes.permanentDrawerRoot                
+                root: classes.permanentDrawerRoot
               }}
             >
-            {drawer}
+              {drawer}
             </Drawer>
           </Hidden>
         </nav>
@@ -107,7 +118,6 @@ function EditProfilePage({ history }) {
           {path.includes("edit") && <EditUserInfo user={defaultCurrentUser} />}
         </main>
       </section>
-
     </Layout>
   );
 }
@@ -123,12 +133,12 @@ function EditUserInfo({ user }) {
           <Typography className={classes.typography}>
             {user.username}
           </Typography>
-          <Typography 
-            color="primary" 
+          <Typography
+            color="primary"
             variant="body2"
             className={classes.typographyChangePic}
-            >
-              Change Profile Photo
+          >
+            Change Profile Photo
           </Typography>
         </div>
       </div>
@@ -140,7 +150,7 @@ function EditUserInfo({ user }) {
           <aside>
             <Typography className={classes.bio}>Bio</Typography>
           </aside>
-          <TextField 
+          <TextField
             variant="outlined"
             multiline
             rowsMax={3}
@@ -150,15 +160,18 @@ function EditUserInfo({ user }) {
           />
         </div>
         <div className={classes.sectionItem}>
-          <div/>
-          <Typography color="textSecondary" className={classes.justifySelfStart}>
+          <div />
+          <Typography
+            color="textSecondary"
+            className={classes.justifySelfStart}
+          >
             Personal information
           </Typography>
         </div>
         <SectionItem text="Email" formItem={user.email} type="email" />
-        <SectionItem text="Phone number" formItem={user.phone_number} />
+        <SectionItem text="Phone Number" formItem={user.phone_number} />
         <div className={classes.sectionItem}>
-          <div/>
+          <div />
           <Button
             type="submit"
             variant="contained"
@@ -173,7 +186,7 @@ function EditUserInfo({ user }) {
   );
 }
 
-function SectionItem({ type= "text", text, formItem }) {
+function SectionItem({ type = "text", text, formItem }) {
   const classes = useEditProfilePageStyles();
 
   return (
@@ -185,19 +198,17 @@ function SectionItem({ type= "text", text, formItem }) {
           </Typography>
         </Hidden>
         <Hidden smUp>
-        <Typography className={classes.typography}>
-            {text}
-          </Typography>
+          <Typography className={classes.typography}>{text}</Typography>
         </Hidden>
       </aside>
-      <TextField 
+      <TextField
         variant="outlined"
         fullWidth
         value={formItem}
         type={type}
         className={classes.textField}
         inputProps={{
-          className: classes.TextFieldInput
+          className: classes.textFieldInput
         }}
       />
     </div>

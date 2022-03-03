@@ -23,20 +23,22 @@ function FeedPage() {
       <div className={classes.container}>
         {/* Feed Posts */}
         <div>
-          {Array.from({ length: 5 }, () => getDefaultPost()).map((post, index) => (
-            <React.Suspense key={post.id} fallback={FeedPostSkeleton}>
-              <FeedPost index={index} post={post} />
-            </React.Suspense>
-          ))}
+          {Array.from({ length: 5 }, () => getDefaultPost()).map(
+            (post, index) => (
+              <React.Suspense key={post.id} fallback={<FeedPostSkeleton />}>
+                <FeedPost index={index} post={post} />
+              </React.Suspense>
+            )
+          )}
         </div>
         {/* Sidebar */}
         <Hidden smDown>
-            <div className={classes.sidebarContainer}>
-              <div className={classes.sidebarWrapper}>
-                <UserCard avatarSize={50} />
-                <FeedSideSuggestions />
-              </div>
+          <div className={classes.sidebarContainer}>
+            <div className={classes.sidebarWrapper}>
+              <UserCard avatarSize={50} />
+              <FeedSideSuggestions />
             </div>
+          </div>
         </Hidden>
         {!isEndOfFeed && <LoadingLargeIcon />}
       </div>

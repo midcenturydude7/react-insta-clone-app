@@ -14,13 +14,13 @@ function FeedSideSuggestions() {
   return (
     <article className={classes.article}>
       <Paper className={classes.paper}>
-        <Typography 
+        <Typography
           color="textSecondary"
           variant="subtitle2"
           component="h2"
           align="left"
           gutterBottom
-          className={classes.typography}  
+          className={classes.typography}
         >
           Suggestions For You
         </Typography>
