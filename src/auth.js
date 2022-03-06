@@ -54,32 +54,61 @@ function AuthProvider({ children }) {
     });
   }, []);
 
-  async function signInWithGoogle() {
-      await firebase.auth().signInWithPopup(provider);
-  };
+  async function logInWithGoogle() {
+    const data = await firebase.auth().signInWithPopup(provider);
+    if (data.additionalUserInfo.isNewUser) {
+      // console.log({ data });
+      const { uid, displayName, email, photoURL } = data.user;
+      const username = `${displayName.replace(/\s+/g, "")}${uid.slice(-5)}`;
+      const variables = {
+        userId: uid,
+        name: displayName,
+        username,
+        email,
+        bio: "",
+        website: "",
+        phoneNumber: "",
+        profileImage: photoURL,
+      };
+      await createUser({ variables });
+    }
+  }
+
+  async function logInWithEmailAndPassword(email, password) {
+    const data = await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password);
+    return data;
+  }
 
   async function signUpWithEmailAndPassword(formData) {
-    const data = await firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password);
+    const data = await firebase
+      .auth()
+      .createUserWithEmailAndPassword(formData.email, formData.password);
     if (data.additionalUserInfo.isNewUser) {
-        const variables = {
-            userId: data.user.uid,
-            name: formData.name, 
-            username: formData.username,
-            email: data.user.email,
-            bio: "",
-            website: "",
-            phoneNumber: "",
-            profileImage: defaultUserImage
-        }
-        await createUser({ variables })
+      const variables = {
+        userId: data.user.uid,
+        name: formData.name,
+        username: formData.username,
+        email: data.user.email,
+        bio: "",
+        website: "",
+        phoneNumber: "",
+        profileImage: defaultUserImage,
+      };
+      await createUser({ variables });
     }
   }
 
   async function signOut() {
-      setAuthState({ status: "loading" });
-      await firebase.auth().signOut();
-      setAuthState({ status: "out" });
-  };
+    setAuthState({ status: "loading" });
+    await firebase.auth().signOut();
+    setAuthState({ status: "out" });
+  }
+
+  async function updateEmail(email) {
+    await authState.user.updateEmail(email);
+  }
 
   if (authState.status === "loading") {
     return null;
@@ -87,16 +116,18 @@ function AuthProvider({ children }) {
     return (
       <AuthContext.Provider
         value={{
-            authState,
-            signInWithGoogle,
-            signOut,
-            signUpWithEmailAndPassword
+          authState,
+          logInWithGoogle,
+          logInWithEmailAndPassword,
+          signOut,
+          signUpWithEmailAndPassword,
+          updateEmail,
         }}
       >
-          {children}
+        {children}
       </AuthContext.Provider>
     );
-  }  
+  }
 }
 
 export default AuthProvider;
