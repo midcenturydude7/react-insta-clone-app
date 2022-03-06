@@ -31,11 +31,11 @@ function PostModal() {
             margin: 0,
             padding: 0,
             overflow: "none",
-            WebkitOverflowScrolling: "touch"
-          }
+            WebkitOverflowScrolling: "touch",
+          },
         }}
       >
-        <Post id={postId} />
+        <Post postId={postId} />
       </Modal>
       <div onClick={() => history.goBack()} className={classes.close}>
         <CloseIcon />
