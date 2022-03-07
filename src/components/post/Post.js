@@ -51,6 +51,7 @@ function Post({ postId }) {
     likes_aggregate,
     saved_posts,
     location,
+    user_id,
     user,
     caption,
     comments,
