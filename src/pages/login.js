@@ -76,10 +76,10 @@ function LoginPage() {
             <form onSubmit={handleSubmit(onSubmit)}>
               <TextField
                 name="input"
-                inputRef={register({
+                inputRef={{...register("input", {
                   required: true,
                   minLength: 5,
-                })}
+                })}}
                 fullWidth
                 variant="filled"
                 label="Username, email, or phone"
@@ -89,10 +89,10 @@ function LoginPage() {
               />
               <TextField
                 name="password"
-                inputRef={register({
+                inputRef={{...register("password", {
                   required: true,
                   minLength: 5,
-                })}
+                })}}
                 InputProps={{
                   endAdornment: hasPassword && (
                     <InputAdornment>
