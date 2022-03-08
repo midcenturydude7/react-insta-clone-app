@@ -1,4 +1,4 @@
-async function handleImageUpload(image, uploadPreset = "instagram-react12") {
+async function handleImageUpload(image, uploadPreset = "insta-clone-avatar") {
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", uploadPreset);

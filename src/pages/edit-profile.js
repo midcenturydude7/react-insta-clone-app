@@ -179,7 +179,7 @@ function EditUserInfo({ user }) {
   async function handleUpdateProfilePic(event) {
     const url = await handleImageUpload(
       event.target.files[0],
-      "instagram-avatar-react12"
+      "insta-clone-avatar"
     );
     const variables = { id: user.id, profileImage: url };
     await editUserAvatar({ variables });

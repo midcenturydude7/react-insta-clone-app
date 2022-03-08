@@ -16,7 +16,7 @@ function ProfilePicture({ size, image, isOwner }) {
   async function handleUpdateProfilePic(event) {
     const url = await handleImageUpload(
       event.target.files[0],
-      "instagram-avatar-react12"
+      "insta-clone-avatar"
     );
     const variables = { id: currentUserId, profileImage: url };
     await editUserAvatar({ variables });
