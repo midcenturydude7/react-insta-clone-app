@@ -67,7 +67,7 @@ export const GET_POST = gql`
         id
         user_id
       }
-      comments(order_by: { created_at: desc }) {
+      comments(order_by: { created_at: desc }, limit: 2) {
         id
         content
         created_at
